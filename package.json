@@ -1,0 +1,20 @@
+{
+  "name": "image-size-loader",
+  "version": "0.7.0",
+  "author": "Patrick Collins <pat@burned.com>",
+  "contributors": [
+    "Boopathi Rajaa <me@boopathi.in>",
+    "Patrick Collins <pat@burned.com>",
+    "Vignesh Shanmugam <vignesh.shanmugam22@gmail.com>"
+  ],
+  "description": "image size loader module for webpack",
+  "dependencies": {
+    "image-size": "^0.6.2",
+    "loader-utils": "^0.2.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/patcoll/image-size-loader.git"
+  },
+  "license": "Apache-2.0"
+}
