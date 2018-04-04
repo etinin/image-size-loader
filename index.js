@@ -22,28 +22,29 @@ var imageToString = function(image) {
 module.exports = function(content) {
 
   this.cacheable && this.cacheable(true);
-  if(!this.emitFile) throw new Error('emitFile is required from module system');
+  // if(!this.emitFile) throw new Error('emitFile is required from module system');
   this.addDependency(this.resourcePath);
 
-  var query = loaderUtils.parseQuery(this.query);
+  var options = loaderUtils.getOptions(this) || {};
   var filename = "[name].[ext]";
 
-  if ('string' === typeof query.name) {
-    filename = query.name;
+  if ('string' === typeof options.name) {
+    filename = options.name;
   }
 
   var url = loaderUtils.interpolateName(this, filename, {
     context: this.rootContext,
     content: content,
-    regExp: query.regExp
+    regExp: options.regExp
   });
 
   var image = sizeOf(this.resourcePath);
 
   image.src = url;
   image.bytes = fs.statSync(this.resourcePath).size;
-
-  this.emitFile(url, content);
+  if(options.emitFile || this.emitFile) {
+    this.emitFile(url, content);
+  }
 
   return imageToString(image);
 
