@@ -33,7 +33,7 @@ module.exports = function(content) {
   }
 
   var url = loaderUtils.interpolateName(this, filename, {
-    context: query.context || this.options.context,
+    context: query.context || this.rootContext,
     content: content,
     regExp: query.regExp
   });
